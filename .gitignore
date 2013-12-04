@@ -1,0 +1,5 @@
+Release/
+Debug/
+DerivedData/
+*.build/
+PrecompiledHeaders/
