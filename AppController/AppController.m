@@ -11,6 +11,7 @@
 @implementation AppController
 
 @synthesize frameOutputURL;
+@synthesize endAppControlLoop;
 
 - (BOOL) setupAVCapture {
 	NSError *error = nil;
@@ -50,7 +51,10 @@
 	[rootLayer setBackgroundColor: CGColorGetConstantColor(kCGColorBlack)];
 	[rootLayer addSublayer: previewLayer];
     // add a text field (or label) on top of the preview, showing the gesture status
+    [gdStatusView setStringValue: @"Stopped"];
+    [gdStatusView setTextColor: [NSColor colorWithCalibratedRed:1.0 green:0.0 blue:0.0 alpha:1.0]];
     [rootLayer addSublayer: [gdStatusView layer]];
+    
 	
     // start the capture session running, note this is an async operation
     // status is provided via notifications such as AVCaptureSessionDidStartRunningNotification/AVCaptureSessionDidStopRunningNotification
@@ -76,6 +80,10 @@
 
 - (void) appControl {
     while (true) {
+        if (self.endAppControlLoop) {
+            [gdStatusView setStringValue: @"Stopped"];
+            break;
+        }
         // save frame as an image
         [self saveImage];
         
@@ -98,20 +106,27 @@
         itunes = [SBApplication applicationWithBundleIdentifier: @"com.apple.iTunes"];
         if (gdCode == 0) {
             [gdStatusView setStringValue: @"No Gesture"];
-            if ([itunes isRunning]) {
-                if (iTunesEPlSPlaying != [itunes playerState]) {
-                    [itunes playpause];
-                }
-            }
         }
         else if (gdCode == 1) {
             [gdStatusView setStringValue: @"Fist"];
+            if ([itunes isRunning]) {  // iTunes must be running
+                // pause iTunes if it is playing
+                if (iTunesEPlSPlaying == [itunes playerState]) {
+                    [itunes playpause];
+                }
+            }
         }
         else if (gdCode == 2) {
             [gdStatusView setStringValue: @"Five"];
         }
         else if (gdCode == 3) {
             [gdStatusView setStringValue: @"Pointing"];
+            if ([itunes isRunning]) {  // iTunes must be running
+                // play iTunes if it is paused
+                if (iTunesEPlSPlaying != [itunes playerState]) {
+                    [itunes playpause];
+                }
+            }
         }
         
     }
@@ -120,11 +135,21 @@
 - (IBAction) startStop: (id) sender {
 	if (started) {
 		// finish
+        self.endAppControlLoop = YES;
         [appControlThread cancel];
+        [appControlThread release];
+        appControlThread = nil;
+        [gdStatusView setStringValue: @"Stopped"];
+        [gdStatusView setTextColor: [NSColor colorWithCalibratedRed:1.0 green:0.0 blue:0.0 alpha:1.0]];
 		[sender setTitle:@"Start"];
 	}
 	else {
+        // begin
+        self.endAppControlLoop = NO;
+        appControlThread = [[NSThread alloc] initWithTarget:self selector:@selector(appControl) object:nil];
         [appControlThread start];
+        [gdStatusView setStringValue: @"No Gesture"];
+        [gdStatusView setTextColor: [NSColor colorWithCalibratedRed:13.0/255.0 green:56.0/255.0 blue:162.0/255.0 alpha:1.0]];
 		[sender setTitle:@"Stop"];
 	}
 	started = !started;
@@ -148,9 +173,7 @@
     self = [super init];
     self.frameOutputURL = [NSURL URLWithString: @"frame.png" relativeToURL:[[NSBundle mainBundle] resourceURL]];
     [[NSFileManager defaultManager] removeItemAtURL:self.frameOutputURL error:nil];
-    appControlThread = [[NSThread alloc] initWithTarget:self selector:@selector(appControl) object:nil];
     [self setDisplayName: @"AppController Monitor"];
-    [gdStatusView setStringValue: @"No Gesture"];
     
     return self;
 }

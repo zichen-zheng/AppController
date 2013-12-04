@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import <AVFoundation/AVFoundation.h>
 #import <AppKit/NSImage.h>
+#import <Foundation/NSTimer.h>
 #import "iTunes.h"
 
 @interface AppController: NSDocument {
@@ -24,6 +25,7 @@
 }
 
 @property (retain) NSURL* frameOutputURL;
+@property (atomic) BOOL endAppControlLoop;
 - (IBAction) startStop: (id) sender;
 - (IBAction) togglePreviewMirrored: (id) sender;
 @end

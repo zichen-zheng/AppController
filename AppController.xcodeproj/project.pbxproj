@@ -107,7 +107,6 @@
 		2BEDD79A13D4EC5000A45EBF /* AppController */ = {
 			isa = PBXGroup;
 			children = (
-				C937837C184EDF2C002A74B1 /* iTunes.h */,
 				C919A314184E533400610B8F /* AppController.h */,
 				C919A315184E533400610B8F /* AppController.m */,
 				C919A319184E534300610B8F /* MainMenu.xib */,
@@ -121,10 +120,11 @@
 		2BEDD79B13D4EC5000A45EBF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				C919A322184E53A800610B8F /* InfoPlist.strings */,
-				C919A31D184E535400610B8F /* AppController-Info.plist */,
+				C937837C184EDF2C002A74B1 /* iTunes.h */,
 				C919A31E184E535400610B8F /* AppController-Prefix.pch */,
 				C919A31F184E535400610B8F /* main.m */,
+				C919A31D184E535400610B8F /* AppController-Info.plist */,
+				C919A322184E53A800610B8F /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
