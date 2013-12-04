@@ -103,31 +103,68 @@
         int gdCode = [gdResultStr intValue];
         NSLog(@"Gesture code: %d\n", gdCode);
         
-        itunes = [SBApplication applicationWithBundleIdentifier: @"com.apple.iTunes"];
+        itunesApp = [SBApplication applicationWithBundleIdentifier: @"com.apple.iTunes"];
+        
         if (gdCode == 0) {
             [gdStatusView setStringValue: @"No Gesture"];
         }
         else if (gdCode == 1) {
             [gdStatusView setStringValue: @"Fist"];
-            if ([itunes isRunning]) {  // iTunes must be running
+            
+            if ([itunesApp isRunning]) {  // iTunes must be running
                 // pause iTunes if it is playing
-                if (iTunesEPlSPlaying == [itunes playerState]) {
-                    [itunes playpause];
+                if (iTunesEPlSPlaying == [itunesApp playerState]) {
+                    [itunesApp playpause];
                 }
             }
+            
+            /*
+            // refresh page (command + R)
+            NSAppleScript* scriptObject = [[NSAppleScript alloc] initWithSource: @"tell application \"System Events\" to key code 15 using command downn"];
+            NSDictionary* errorDict;
+            NSAppleEventDescriptor* returnDescriptor = NULL;
+            returnDescriptor = [scriptObject executeAndReturnError: &errorDict];
+            [scriptObject release];
+             */
         }
+        
         else if (gdCode == 2) {
-            [gdStatusView setStringValue: @"Five"];
+            [gdStatusView setStringValue: @"Palm"];
+            
+            if ([itunesApp isRunning]) {  // iTunes must be running
+                // play next track
+                if (previousGDCode != gdCode) {
+                    [itunesApp nextTrack];
+                }
+            }
+            
+            // press down key
+            NSAppleScript* scriptObject = [[NSAppleScript alloc] initWithSource: @"tell application \"System Events\" to key code 125\n"];
+            NSDictionary* errorDict;
+            NSAppleEventDescriptor* returnDescriptor = NULL;
+            returnDescriptor = [scriptObject executeAndReturnError: &errorDict];
+            [scriptObject release];
         }
+        
         else if (gdCode == 3) {
             [gdStatusView setStringValue: @"Pointing"];
-            if ([itunes isRunning]) {  // iTunes must be running
+            
+            if ([itunesApp isRunning]) {  // iTunes must be running
                 // play iTunes if it is paused
-                if (iTunesEPlSPlaying != [itunes playerState]) {
-                    [itunes playpause];
+                if (iTunesEPlSPlaying != [itunesApp playerState]) {
+                    [itunesApp playpause];
                 }
             }
+            
+            // press up key
+            NSAppleScript* scriptObject = [[NSAppleScript alloc] initWithSource: @"tell application \"System Events\" to key code 126\n"];
+            NSDictionary* errorDict;
+            NSAppleEventDescriptor* returnDescriptor = NULL;
+            returnDescriptor = [scriptObject executeAndReturnError: &errorDict];
+            [scriptObject release];
         }
+        
+        previousGDCode = gdCode;
         
     }
 }
@@ -174,6 +211,7 @@
     self.frameOutputURL = [NSURL URLWithString: @"frame.png" relativeToURL:[[NSBundle mainBundle] resourceURL]];
     [[NSFileManager defaultManager] removeItemAtURL:self.frameOutputURL error:nil];
     [self setDisplayName: @"AppController Monitor"];
+    previousGDCode = -1;
     
     return self;
 }

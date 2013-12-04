@@ -13,15 +13,16 @@
 #import "iTunes.h"
 
 @interface AppController: NSDocument {
-	IBOutlet NSView* previewView;
+    IBOutlet NSView* previewView;
     IBOutlet NSTextField* gdStatusView;
-	AVCaptureSession* captureSession;
+    AVCaptureSession* captureSession;
     AVCaptureVideoPreviewLayer* previewLayer;
-	AVCaptureStillImageOutput* stillImageOutput;
-	BOOL started;
-	NSURL* frameOutputURL;
+    AVCaptureStillImageOutput* stillImageOutput;
+    BOOL started;
+    NSURL* frameOutputURL;
     NSThread* appControlThread;
-    iTunesApplication* itunes;
+    iTunesApplication* itunesApp;
+    int previousGDCode;
 }
 
 @property (retain) NSURL* frameOutputURL;

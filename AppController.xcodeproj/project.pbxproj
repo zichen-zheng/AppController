@@ -20,6 +20,7 @@
 		C919A326184E548B00610B8F /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C919A325184E548B00610B8F /* AppKit.framework */; };
 		C937837E184EDF5B002A74B1 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C937837D184EDF5B002A74B1 /* ScriptingBridge.framework */; };
 		C94604F7184EB3EA0074B106 /* GestureDetector in Resources */ = {isa = PBXBuildFile; fileRef = C94604F6184EB3EA0074B106 /* GestureDetector */; };
+		C9A79A14184F140900D16138 /* AppController.iconset in Resources */ = {isa = PBXBuildFile; fileRef = C9A79A13184F140900D16138 /* AppController.iconset */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,8 @@
 		C937837C184EDF2C002A74B1 /* iTunes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iTunes.h; path = AppController/iTunes.h; sourceTree = SOURCE_ROOT; };
 		C937837D184EDF5B002A74B1 /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
 		C94604F6184EB3EA0074B106 /* GestureDetector */ = {isa = PBXFileReference; lastKnownFileType = folder; path = GestureDetector; sourceTree = "<group>"; };
+		C9A79A0D184F02A800D16138 /* Keynote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Keynote.h; path = AppController/Keynote.h; sourceTree = SOURCE_ROOT; };
+		C9A79A13184F140900D16138 /* AppController.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; name = AppController.iconset; path = AppController/AppController.iconset; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +123,8 @@
 		2BEDD79B13D4EC5000A45EBF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C9A79A13184F140900D16138 /* AppController.iconset */,
+				C9A79A0D184F02A800D16138 /* Keynote.h */,
 				C937837C184EDF2C002A74B1 /* iTunes.h */,
 				C919A31E184E535400610B8F /* AppController-Prefix.pch */,
 				C919A31F184E535400610B8F /* main.m */,
@@ -179,6 +184,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C94604F7184EB3EA0074B106 /* GestureDetector in Resources */,
+				C9A79A14184F140900D16138 /* AppController.iconset in Resources */,
 				C919A320184E535400610B8F /* AppController-Info.plist in Resources */,
 				C919A324184E53A800610B8F /* InfoPlist.strings in Resources */,
 				C919A31B184E534300610B8F /* AppControllerMonitor.xib in Resources */,
