@@ -7,6 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="AppController">
             <connections>
+                <outlet property="debugTextView" destination="mow-2t-gZs" id="AhI-w7-c03"/>
                 <outlet property="gdStatusView" destination="a1w-Cn-Qc7" id="yHA-bM-l7e"/>
                 <outlet property="previewView" destination="100035" id="100048"/>
                 <outlet property="window" destination="5" id="18"/>
@@ -24,9 +25,9 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button verticalHuggingPriority="750" id="100069">
-                        <rect key="frame" x="111" y="13" width="105" height="32"/>
+                        <rect key="frame" x="40" y="13" width="144" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="Start" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="100070">
+                        <buttonCell key="cell" type="push" title="Start Controlling" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="100070">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -35,7 +36,7 @@
                         </connections>
                     </button>
                     <button id="100057">
-                        <rect key="frame" x="279" y="21" width="113" height="18"/>
+                        <rect key="frame" x="349" y="21" width="113" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Mirror Preview" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="100058">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -50,16 +51,36 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="a1w-Cn-Qc7">
-                                <rect key="frame" x="367" y="299" width="140" height="50"/>
+                                <rect key="frame" x="11" y="293" width="140" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Status" drawsBackground="YES" allowsEditingTextAttributes="YES" id="yfN-Wq-ytq">
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="border" alignment="center" title="(gesture)" drawsBackground="YES" allowsEditingTextAttributes="YES" id="yfN-Wq-ytq">
                                     <font key="font" size="24" name="GillSans"/>
-                                    <color key="textColor" red="0.052516484918492111" green="0.21901196250797025" blue="0.63502038043478259" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="backgroundColor" red="0.99919813871383667" green="0.84245767299454266" blue="0.027886723307177751" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" red="0.00076920635339166471" green="0.37191087372448983" blue="0.0011934387343756972" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.84285566382946275" green="1" blue="0.76686779207896127" alpha="1" colorSpace="calibratedRGB"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="mow-2t-gZs">
+                                <rect key="frame" x="21" y="10" width="464" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Label" drawsBackground="YES" id="YoA-Gf-Db0">
+                                    <font key="font" size="10" name="LucidaGrande"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                         </subviews>
                     </customView>
+                    <button id="rXI-ff-Ax5">
+                        <rect key="frame" x="207" y="19" width="127" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Control iTunes" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="RgO-qx-oVZ">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="toggleiTunesControlled:" target="-2" id="3fN-HJ-aEu"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <connections>

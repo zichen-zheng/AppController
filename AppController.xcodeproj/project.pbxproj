@@ -44,7 +44,7 @@
 		C937837C184EDF2C002A74B1 /* iTunes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iTunes.h; path = AppController/iTunes.h; sourceTree = SOURCE_ROOT; };
 		C937837D184EDF5B002A74B1 /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
 		C94604F6184EB3EA0074B106 /* GestureDetector */ = {isa = PBXFileReference; lastKnownFileType = folder; path = GestureDetector; sourceTree = "<group>"; };
-		C9A79A0D184F02A800D16138 /* Keynote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Keynote.h; path = AppController/Keynote.h; sourceTree = SOURCE_ROOT; };
+		C98286AB1851A2460010C78E /* Basic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Basic.h; path = AppController/Basic.h; sourceTree = SOURCE_ROOT; };
 		C9A79A13184F140900D16138 /* AppController.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; name = AppController.iconset; path = AppController/AppController.iconset; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -112,6 +112,7 @@
 			children = (
 				C919A314184E533400610B8F /* AppController.h */,
 				C919A315184E533400610B8F /* AppController.m */,
+				C98286AB1851A2460010C78E /* Basic.h */,
 				C919A319184E534300610B8F /* MainMenu.xib */,
 				C919A317184E534300610B8F /* AppControllerMonitor.xib */,
 				2BEDD79B13D4EC5000A45EBF /* Supporting Files */,
@@ -124,7 +125,6 @@
 			isa = PBXGroup;
 			children = (
 				C9A79A13184F140900D16138 /* AppController.iconset */,
-				C9A79A0D184F02A800D16138 /* Keynote.h */,
 				C937837C184EDF2C002A74B1 /* iTunes.h */,
 				C919A31E184E535400610B8F /* AppController-Prefix.pch */,
 				C919A31F184E535400610B8F /* main.m */,
