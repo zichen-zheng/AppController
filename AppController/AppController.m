@@ -93,8 +93,9 @@
         // execute gesture detection routine
         NSTask* gdTask = [[NSTask alloc] init];  // task for gesture detection
         NSString* gdExecPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent: @"GestureDetector/GestureDetector"];
+        NSString* gdRootDir = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent: @"GestureDetector/"];
         [gdTask setLaunchPath: gdExecPath];
-        [gdTask setArguments: [NSArray arrayWithObjects: @"-m", @"5", @"-i", frameOutputURL, nil]];
+        [gdTask setArguments: [NSArray arrayWithObjects: @"-m", @"5", @"-i", frameOutputURL, @"-r", gdRootDir, nil]];
         [gdTask launch];
         [gdTask waitUntilExit];
         
