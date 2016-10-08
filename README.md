@@ -11,4 +11,4 @@ The AppController consists of two parts: the higher level (AppController UI) whi
 
 The AppController is designed to control numbers of apps, including iTunes, Safari, Google Chrome, iWorks, Microsoft Office, Adobe Reader, etc. The two snapshots above show that I play iTunes and that I scroll down a Chrome webpage respectively.
 
-[Demo video](https://www.youtube.com/edit?video_id=K0aSkdeiMOM)
+[Demo video](https://youtu.be/K0aSkdeiMOM)
